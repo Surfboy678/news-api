@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cars List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+
+
+</head>
+<body>
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Type</td>
+            <td>section name</td>
+            <td>web title</td>
+            <td>web url</td>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr th:each="result: ${news}">
+            <td th:text="${result.id}"></td>
+            <td th:text="${result.type}"></td>
+
+            <td th:text="${result.sectionName}"></td>
+
+            <td th:text="${result.webTitle}"></td>
+            <td th:text="${result.webUrl}"></td>
+
+
+
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+</body>
+
+</html>
