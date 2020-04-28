@@ -6,6 +6,7 @@ import com.brodacki.janusz.newsapi.model.News;
 import com.brodacki.janusz.newsapi.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,9 +33,9 @@ public class NewsService {
         return newsDao.getAll();
     }
 
-    public Result getNews(){
+    public News getNews(){
         String urlToNews = GET_ALL_URL + APPID;
-       Result news = restTemplate.getForObject(urlToNews, Result.class);
+       News news = restTemplate.getForObject(urlToNews, News.class);
         return news;
     }
 

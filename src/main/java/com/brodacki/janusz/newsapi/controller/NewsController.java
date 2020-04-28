@@ -2,7 +2,6 @@ package com.brodacki.janusz.newsapi.controller;
 
 
 
-import com.brodacki.janusz.newsapi.dao.NewsDaoImpl;
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
 import com.brodacki.janusz.newsapi.model.News;
 import com.brodacki.janusz.newsapi.model.Result;
@@ -10,13 +9,11 @@ import com.brodacki.janusz.newsapi.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -37,10 +34,12 @@ public class NewsController {
         model.addAttribute("news", news);
         return "news";
     }
-    @RequestMapping("/listApi")
+    @RequestMapping(method = RequestMethod.GET, value = "listApi")
     public String getAllNewsFromApi(Model model){
-       model.addAttribute("news",newsService.getNews());
-      return "news";
+       News result = newsService.getNews();
+       model.addAttribute("news", result);
+       return "news";
+
     }
 
 }
