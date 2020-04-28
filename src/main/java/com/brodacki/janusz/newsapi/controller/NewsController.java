@@ -36,7 +36,7 @@ public class NewsController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "listApi")
     public String getAllNewsFromApi(Model model){
-       News result = newsService.getNews();
+       List<Result> result = newsService.getNews();
        model.addAttribute("news", result);
        return "news";
 
