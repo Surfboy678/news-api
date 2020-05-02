@@ -27,16 +27,15 @@
         </tr>
         </thead>
         <tbody>
-
-
         <tr th:each="result: ${news}">
             <td th:text="${result.id}"></td>
             <td th:text="${result.type}"></td>
+
             <td th:text="${result.sectionName}"></td>
+
             <td th:text="${result.webTitle}"></td>
             <td th:text="${result.webUrl}"></td>
 
-            <td><a th:href="@{/news/add}">Add News</a></td>
 
 
         </tr>

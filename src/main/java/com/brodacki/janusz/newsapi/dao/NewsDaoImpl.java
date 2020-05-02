@@ -1,6 +1,7 @@
 package com.brodacki.janusz.newsapi.dao;
 
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
+import com.brodacki.janusz.newsapi.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -36,14 +37,11 @@ public class NewsDaoImpl {
         return newsList1;
     }
 
-    public void addNews(Long id, String type, String sectionName, String webTitle, String webUrl) {
-        NewsJasonModel result = new NewsJasonModel(id,type, sectionName, webTitle, webUrl);
-        String sql = "INSERT INTO news VALUES (?, ?, ?, ?, ?) ";
-        jdbcTemplate.update(sql, result.getId(), result.getType(), result.getSectionName(),
-                result.getWebTitle(), result.getWebUrl());
+    public void addNews(Result result) {
+        NewsJasonModel newsJasonModel= new NewsJasonModel(result.getType(), result.getSectionName(), result.getWebTitle(), result.getWebUrl());
+        String sql = "INSERT INTO news (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql,newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle(), newsJasonModel.getWebUrl());
     }
 
-
-
-    }
+}
 

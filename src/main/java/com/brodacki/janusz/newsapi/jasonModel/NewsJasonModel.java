@@ -16,7 +16,7 @@ public class NewsJasonModel {
         this.webUrl = webUrl;
     }
 
-    public NewsJasonModel() {
+    public NewsJasonModel(String type, String sectionName, String webTitle, String webUrl) {
     }
 
     public long getId() {

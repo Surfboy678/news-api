@@ -35,8 +35,12 @@ public class NewsService {
     public List<Result> getNews(){
         String urlToNews = GET_ALL_URL + APPID;
        News news = restTemplate.getForObject(urlToNews, News.class);
-       news.getResponse().getResults();
-        return  news.getResponse().getResults();
+        return news.getResponse().getResults();
     }
+
+    public void saveNews(Result result){
+        newsDao.addNews(result);
+    }
+
 
 }
