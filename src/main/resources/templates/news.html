@@ -36,7 +36,17 @@
             <td th:text="${result.webTitle}"></td>
             <td th:text="${result.webUrl}"></td>
 
-            <td><a th:href="@{/news/add}">Add News</a></td>
+            <td>
+                <form th:each="index : ${news}"
+                      th: action = "@ {/news/add }"
+                      th: object = ${result[__${index}__]}"  method = „post”>>
+                    <input type = "hidden" th: field = "*{id}"/>
+                    <div class="row">
+                        <button type="submit" class="btn btn-default">add news</button>
+                    </div>
+                </form>
+
+            </td>
 
 
         </tr>
