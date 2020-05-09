@@ -24,10 +24,10 @@ public class DbConfig {
         return new JdbcTemplate(dataSource);
     }
 
-   //@EventListener(ApplicationReadyEvent.class)
-   //public void init() {
-     //   String sql = "CREATE TABLE news(id int auto_increment, type varchar (255), section_name varchar(255)," +
-       //         " web_title varchar (255), web_url varchar (255), primary key(id))";
-        //getJdbcTemplate().update(sql);
-    //}
+  // @EventListener(ApplicationReadyEvent.class)
+  // public void init() {
+   //     String sql = "CREATE TABLE news(id int auto_increment, type varchar (255), section_name varchar(255)," +
+   //             " web_title varchar (255), primary key(id))";
+    //    getJdbcTemplate().update(sql);
+   // }
 }

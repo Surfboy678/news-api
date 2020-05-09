@@ -28,19 +28,19 @@ public class NewsDaoImpl {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
         maps.stream().forEach(element -> {
             newsList1.add(new NewsJasonModel(
-                    Long.parseLong(String.valueOf(element.get("id"))),
+                   // String.valueOf(element.get("id")),
                     String.valueOf(element.get("type")),
                     String.valueOf(element.get("section_name")),
-                    String.valueOf(element.get("web_title")),
-                    String.valueOf(element.get("web_url"))));
+                    String.valueOf(element.get("web_title"))));
+                    //String.valueOf(element.get("web_url"))));
         });
         return newsList1;
     }
 
     public void addNews(Result result) {
-        NewsJasonModel newsJasonModel= new NewsJasonModel(result.getType(), result.getSectionName(), result.getWebTitle(), result.getWebUrl());
-        String sql = "INSERT INTO news (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql,newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle(), newsJasonModel.getWebUrl());
+        NewsJasonModel newsJasonModel = new NewsJasonModel(result.getType(), result.getSectionName(), result.getWebTitle());
+        String sql = "INSERT INTO news (?, ?, ?)";
+        jdbcTemplate.update(sql,newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle() );
     }
 
 }

@@ -3,7 +3,6 @@ package com.brodacki.janusz.newsapi.controller;
 
 
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
-import com.brodacki.janusz.newsapi.model.News;
 import com.brodacki.janusz.newsapi.model.Result;
 import com.brodacki.janusz.newsapi.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class NewsController {
 
     }
     @RequestMapping(method = RequestMethod.POST, value = "add")
-    public String addNewsToDataBase(@ModelAttribute Result result){
+    public String addNewsToDataBase(@ModelAttribute("result") Result result){
        newsService.saveNews(result);
       return "news";
 
