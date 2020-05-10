@@ -23,24 +23,24 @@ public class NewsDaoImpl {
     }
 
     public List<NewsJasonModel> getAll() {
-        List<NewsJasonModel> newsList1 = new ArrayList<>();
+        List<NewsJasonModel> newsList = new ArrayList<>();
         String sql = "SELECT * FROM news ";
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
         maps.stream().forEach(element -> {
-            newsList1.add(new NewsJasonModel(
+            newsList.add(new NewsJasonModel(
                    // String.valueOf(element.get("id")),
                     String.valueOf(element.get("type")),
                     String.valueOf(element.get("section_name")),
                     String.valueOf(element.get("web_title"))));
                     //String.valueOf(element.get("web_url"))));
         });
-        return newsList1;
+        return newsList;
     }
 
     public void addNews(Result result) {
         NewsJasonModel newsJasonModel = new NewsJasonModel(result.getType(), result.getSectionName(), result.getWebTitle());
-        String sql = "INSERT INTO news (?, ?, ?)";
-        jdbcTemplate.update(sql,newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle() );
+        String sql = "INSERT INTO news(type, section_name, web_title)  VALUES (?,?,?)";
+        jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
 
 }
