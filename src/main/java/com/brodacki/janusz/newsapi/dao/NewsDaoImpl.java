@@ -2,6 +2,9 @@ package com.brodacki.janusz.newsapi.dao;
 
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
 import com.brodacki.janusz.newsapi.model.Result;
+import com.brodacki.janusz.newsapi.service.NewsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,6 +15,8 @@ import java.util.Map;
 
 @Repository
 public class NewsDaoImpl {
+
+    final static Logger logger = LoggerFactory.getLogger(NewsDaoImpl.class);
 
     private JdbcTemplate jdbcTemplate;
 

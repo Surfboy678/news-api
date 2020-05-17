@@ -33,7 +33,7 @@
             <td th:text="${result.sectionName}"></td>
             <td th:text="${result.webTitle}"></td>
 
-            <td>  <form th:action="@{'/news/add'}" th:value="result" method="post">
+            <td>  <form th:action="@{'/news/add'}" th:object="${result}" method="post">
              <button type="submit">add news</button>
             </form>
          </td>

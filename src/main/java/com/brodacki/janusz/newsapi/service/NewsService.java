@@ -4,6 +4,8 @@ import com.brodacki.janusz.newsapi.dao.NewsDaoImpl;
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
 import com.brodacki.janusz.newsapi.model.News;
 import com.brodacki.janusz.newsapi.model.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.List;
 
 @Service
 public class NewsService {
+
+    final static Logger logger = LoggerFactory.getLogger(NewsService.class);
 
     private NewsDaoImpl newsDao;
 
@@ -39,6 +43,7 @@ public class NewsService {
     }
 
     public void saveNews(Result result){
+        logger.error("error");
         newsDao.addNews(result);
     }
 
