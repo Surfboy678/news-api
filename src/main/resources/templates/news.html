@@ -33,9 +33,13 @@
             <td th:text="${result.sectionName}"></td>
             <td th:text="${result.webTitle}"></td>
 
-            <td>  <form th:action="@{'/news/add'}" th:object="${result}" method="post">
-             <button type="submit">add news</button>
-            </form>
+            <td>
+                <form th:action="@{'/news/add'}" th:object="${result}" method="post">
+                <input type="text" th:field="*{type}" />
+                <input type="text" th:field="*{sectionName}" />
+                <input type="text" th:field="*{webTitle}" />
+                    <button type="submit">add news</button>
+                </form>
          </td>
         </tr>
         </tr>
