@@ -2,11 +2,10 @@ package com.brodacki.janusz.newsapi.controller;
 
 
 
+import com.brodacki.janusz.newsapi.dao.NewsDaoImpl;
 import com.brodacki.janusz.newsapi.jasonModel.NewsJasonModel;
 import com.brodacki.janusz.newsapi.model.Result;
 import com.brodacki.janusz.newsapi.service.NewsService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,8 @@ import java.util.List;
 @RequestMapping("/news")
 public class NewsController {
 
-    final static Logger logger = LoggerFactory.getLogger(NewsController.class);
+    @Autowired
+    private NewsDaoImpl dao;
 
    private NewsService newsService;
 
@@ -45,8 +45,14 @@ public class NewsController {
     @RequestMapping(method = RequestMethod.POST, value = "add")
     public String addNewsToDataBase(@ModelAttribute("result") Result result){
        newsService.saveNews(result);
-      return "news";
+      return "redirect:/news/listNews";
 
+    }
+    @GetMapping(value = "/update")
+    public String updateNews( Result newResult, Model model){
+        dao.updateNews(newResult);
+        model.addAttribute("newResult", newResult);
+        return "updatenews";
     }
 
 }

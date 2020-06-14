@@ -16,7 +16,7 @@ import java.util.Map;
 @Repository
 public class NewsDaoImpl {
 
-    final static Logger logger = LoggerFactory.getLogger(NewsDaoImpl.class);
+
 
     private JdbcTemplate jdbcTemplate;
 
@@ -33,11 +33,9 @@ public class NewsDaoImpl {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
         maps.stream().forEach(element -> {
             newsList.add(new NewsJasonModel(
-                   // String.valueOf(element.get("id")),
                     String.valueOf(element.get("type")),
                     String.valueOf(element.get("section_name")),
                     String.valueOf(element.get("web_title"))));
-                    //String.valueOf(element.get("web_url"))));
         });
         return newsList;
     }
@@ -45,6 +43,11 @@ public class NewsDaoImpl {
     public void addNews(Result result) {
         NewsJasonModel newsJasonModel = new NewsJasonModel(result.getType(), result.getSectionName(), result.getWebTitle());
         String sql = "INSERT INTO news(type, section_name, web_title)  VALUES (?,?,?)";
+        jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
+    }
+    public void updateNews(Result newResult){
+        NewsJasonModel newsJasonModel = new  NewsJasonModel(newResult.getType(), newResult.getSectionName(), newResult.getWebTitle());
+        String sql = "UPDATE news SET news.type= ?, news.section_name = ?, news.web_title = ?";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
 

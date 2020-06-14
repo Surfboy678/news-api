@@ -27,6 +27,8 @@ public class Result {
 
     @JsonProperty("id")
     private String id;
+    @JsonProperty("id")
+    private int newId;
     @JsonProperty("type")
     private String type;
     @JsonProperty("sectionId")
@@ -49,6 +51,16 @@ public class Result {
     private String pillarName;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("newId")
+    public int getNewId() {
+        return newId;
+    }
+
+    @JsonProperty("newId")
+    public void setNewId(int newId) {
+        this.newId = newId;
+    }
 
     @JsonProperty("id")
     public String getId() {

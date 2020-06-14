@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cars List</title>
+    <title>News List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
@@ -18,27 +18,24 @@
     <table class="table">
         <thead>
         <tr>
-            <td>Id</td>
+
             <td>Type</td>
             <td>section name</td>
             <td>web title</td>
-            <td>web url</td>
 
         </tr>
         </thead>
         <tbody>
         <tr th:each="result: ${news}">
-            <td th:text="${result.id}"></td>
+
             <td th:text="${result.type}"></td>
-
             <td th:text="${result.sectionName}"></td>
-
             <td th:text="${result.webTitle}"></td>
-            <td th:text="${result.webUrl}"></td>
 
-
-
+            <td><a th:href="@{/news/update/}">Update</a></td>
         </tr>
+        <td><a th:href="@{/news/listApi}">back</a></td>
+
         </tbody>
 
     </table>

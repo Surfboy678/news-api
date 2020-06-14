@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cars List</title>
+    <title>News List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
@@ -17,31 +17,22 @@
 
     <table class="table">
         <thead>
-        <tr>
 
-            <td>Type</td>
-            <td>section name</td>
-            <td>web title</td>
-
-        </tr>
         </thead>
         <tbody>
 
         <tr th:each="result:${news}">
-
-            <td th:text="${result.type}"></td>
-            <td th:text="${result.sectionName}"></td>
-            <td th:text="${result.webTitle}"></td>
-
             <td>
                 <form th:action="@{'/news/add'}" th:object="${result}" method="post">
-                <input type="text" th:field="*{type}" />
-                <input type="text" th:field="*{sectionName}" />
-                <input type="text" th:field="*{webTitle}" />
+                <input type="text" th:value="*{type}" name="type"/>
+                <input type="text" th:value="*{sectionName}" name="sectionName"/>
+                <input type="text" th:value="*{webTitle}" name="webTitle"/>
+
                     <button type="submit">add news</button>
                 </form>
-         </td>
+            </td>
         </tr>
+        <td><a th:href="@{/news/listNews}">go to database</a></td>
         </tr>
         </tbody>
 

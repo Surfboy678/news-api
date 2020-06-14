@@ -2,7 +2,7 @@ package com.brodacki.janusz.newsapi.jasonModel;
 
 public class NewsJasonModel {
 
-   // private String id;
+
     private String type;
     private String sectionName;
     private String webTitle;
