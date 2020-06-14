@@ -50,6 +50,14 @@ public class NewsDaoImpl {
         String sql = "UPDATE news SET news.type= ?, news.section_name = ?, news.web_title = ?";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
+    public NewsJasonModel getOne(String webTitle) {
+        String sql = "SELECT * FROM news WHERE web_title = ? ";
+        return jdbcTemplate.queryForObject(
+                sql, (resultSet, i) -> new NewsJasonModel (
+                       resultSet.getString("type"),
+                       resultSet.getNString("section_name"),
+                        resultSet.getString("web_title")), webTitle);
+    }
 
 }
 

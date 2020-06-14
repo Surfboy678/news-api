@@ -32,7 +32,7 @@
             <td th:text="${result.sectionName}"></td>
             <td th:text="${result.webTitle}"></td>
 
-            <td><a th:href="@{/news/update/}">Update</a></td>
+            <td><a th:href="@{/news/update/{webTitle}(webTitle=${result.webTitle})}">Update</a></td>
         </tr>
         <td><a th:href="@{/news/listApi}">back</a></td>
 

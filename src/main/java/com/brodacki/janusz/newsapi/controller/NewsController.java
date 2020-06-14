@@ -48,11 +48,15 @@ public class NewsController {
       return "redirect:/news/listNews";
 
     }
-    @GetMapping(value = "/update")
-    public String updateNews( Result newResult, Model model){
-        dao.updateNews(newResult);
-        model.addAttribute("newResult", newResult);
-        return "updatenews";
+    @GetMapping(value = "/update/{webTitle}")
+    public String updateNews(@PathVariable String webTitle, Result newResult, Model model){
+       NewsJasonModel newsJasonModel = dao.getOne(webTitle);
+       if(newsJasonModel != null) {
+           dao.updateNews(newResult);
+           model.addAttribute("newResult", newResult);
+           return "updatenews";
+       }
+        return null;
     }
 
 }
