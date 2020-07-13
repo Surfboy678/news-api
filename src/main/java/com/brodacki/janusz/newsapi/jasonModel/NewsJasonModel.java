@@ -6,20 +6,16 @@ public class NewsJasonModel {
     private String type;
     private String sectionName;
     private String webTitle;
-   // private String webUrl;
 
     public NewsJasonModel( String type, String sectionName, String webTitle) {
 
         this.type = type;
         this.sectionName = sectionName;
         this.webTitle = webTitle;
-       // this.webUrl = webUrl;
     }
 
     public NewsJasonModel() {
     }
-
-
 
     public String getType() {
         return type;

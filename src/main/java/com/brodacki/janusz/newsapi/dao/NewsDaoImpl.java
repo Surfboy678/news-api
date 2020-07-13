@@ -45,11 +45,12 @@ public class NewsDaoImpl {
         String sql = "INSERT INTO news(type, section_name, web_title)  VALUES (?,?,?)";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
-    public void updateNews(Result newResult){
-        NewsJasonModel newsJasonModel = new  NewsJasonModel(newResult.getType(), newResult.getSectionName(), newResult.getWebTitle());
-        String sql = "UPDATE news SET news.type= ?, news.section_name = ?, news.web_title = ?";
+    public void updateNews(NewsJasonModel newResult){
+        NewsJasonModel newsJasonModel = new NewsJasonModel(newResult.getType(), newResult.getSectionName(), newResult.getWebTitle());
+        String sql = "UPDATE news SET type =?, section_name = ? WHERE web_title = ?";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
+
     public NewsJasonModel getOne(String webTitle) {
         String sql = "SELECT * FROM news WHERE web_title = ? ";
         return jdbcTemplate.queryForObject(

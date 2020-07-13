@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cars List</title>
+    <title>news List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
@@ -13,17 +13,17 @@
 
 </head>
 <body>
-  <form th:action="@{'/news/update'}" th:object="${newResult}" method="put">
-    <input type="text" th:value="*{type}" name="type"/>
-    <input type="text" th:value="*{sectionName}" name="sectionName"/>
-    <input type="text" th:value="*{webTitle}" name="webTitle"/>
+  <form th:action="@{/news/update/{webTitle}(webTitle=${newResult.webTitle})}" th:object="${newResult}" method="put">
+      <input type="text" th:value="*{type}" name="type"/>
+      <input type="text" th:value="*{sectionName}" name="sectionName"/>
+      <input type="text" th:value="*{webTitle}" name="webTitle"/>
 
-        <div class="row">
-            <button type="submit" class="btn btn-default">update</button>
-        </div>
+      <button type="submit">update news</button>
+  </form>
+
       <td><a th:href="@{/news/listNews}">go to database</a></td>
-    </form>
-</div>
+
+
 
 </body>
 

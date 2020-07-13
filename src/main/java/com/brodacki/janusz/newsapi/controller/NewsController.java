@@ -21,10 +21,10 @@ public class NewsController {
     @Autowired
     private NewsDaoImpl dao;
 
-   private NewsService newsService;
+    private NewsService newsService;
 
 
-   @Autowired
+    @Autowired
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
     }
@@ -37,25 +37,25 @@ public class NewsController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "listApi")
     public String getAllNewsFromApi(Model model){
-       List<Result> result = newsService.getNews();
-       model.addAttribute("news", result);
-       return "news";
+        List<Result> result = newsService.getNews();
+        model.addAttribute("news", result);
+        return "news";
 
     }
     @RequestMapping(method = RequestMethod.POST, value = "add")
     public String addNewsToDataBase(@ModelAttribute("result") Result result){
-       newsService.saveNews(result);
-      return "redirect:/news/listNews";
+        newsService.saveNews(result);
+        return "redirect:/news/listNews";
 
     }
     @GetMapping(value = "/update/{webTitle}")
-    public String updateNews(@PathVariable String webTitle, Result newResult, Model model){
-       NewsJasonModel newsJasonModel = dao.getOne(webTitle);
-       if(newsJasonModel != null) {
-           dao.updateNews(newResult);
-           model.addAttribute("newResult", newResult);
-           return "updatenews";
-       }
+    public String updateNews(@PathVariable String webTitle,@ModelAttribute("newResult") NewsJasonModel newResult, Model model){
+        NewsJasonModel newsJasonModel = dao.getOne(webTitle);
+        if(newsJasonModel != null) {
+            dao.updateNews(newResult);
+            model.addAttribute("newResult", newResult);
+            return "updatenews";
+        }
         return null;
     }
 
