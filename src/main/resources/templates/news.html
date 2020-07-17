@@ -2,13 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>News List</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
 
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
-
 
 
 </head>
@@ -24,9 +23,9 @@
         <tr th:each="result:${news}">
             <td>
                 <form th:action="@{'/news/add'}" th:object="${result}" method="post">
-                <input type="text" th:value="*{type}" name="type"/>
-                <input type="text" th:value="*{sectionName}" name="sectionName"/>
-                <input type="text" th:value="*{webTitle}" name="webTitle"/>
+                    <input type="text" th:value="*{type}" name="type"/>
+                    <input type="text" th:value="*{sectionName}" name="sectionName"/>
+                    <input type="text" th:value="*{webTitle}" name="webTitle"/>
 
                     <button type="submit">add news</button>
                 </form>

@@ -17,9 +17,7 @@ import java.util.Map;
 public class NewsDaoImpl {
 
 
-
     private JdbcTemplate jdbcTemplate;
-
 
 
     @Autowired
@@ -45,7 +43,8 @@ public class NewsDaoImpl {
         String sql = "INSERT INTO news(type, section_name, web_title)  VALUES (?,?,?)";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
     }
-    public void updateNews(NewsJasonModel newResult){
+
+    public void updateNews(NewsJasonModel newResult) {
         NewsJasonModel newsJasonModel = new NewsJasonModel(newResult.getType(), newResult.getSectionName(), newResult.getWebTitle());
         String sql = "UPDATE news SET type =?, section_name = ? WHERE web_title = ?";
         jdbcTemplate.update(sql, newsJasonModel.getType(), newsJasonModel.getSectionName(), newsJasonModel.getWebTitle());
@@ -54,9 +53,9 @@ public class NewsDaoImpl {
     public NewsJasonModel getOne(String webTitle) {
         String sql = "SELECT * FROM news WHERE web_title = ? ";
         return jdbcTemplate.queryForObject(
-                sql, (resultSet, i) -> new NewsJasonModel (
-                       resultSet.getString("type"),
-                       resultSet.getNString("section_name"),
+                sql, (resultSet, i) -> new NewsJasonModel(
+                        resultSet.getString("type"),
+                        resultSet.getNString("section_name"),
                         resultSet.getString("web_title")), webTitle);
     }
 

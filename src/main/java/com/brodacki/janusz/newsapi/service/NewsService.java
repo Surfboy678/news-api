@@ -32,19 +32,23 @@ public class NewsService {
         this.newsDao = newsDao;
     }
 
-    public List<NewsJasonModel> getListNews(){
+    public List<NewsJasonModel> getListNews() {
         return newsDao.getAll();
     }
 
-    public List<Result> getNews(){
+    public List<Result> getNews() {
         String urlToNews = GET_ALL_URL + APPID;
-       News news = restTemplate.getForObject(urlToNews, News.class);
+        News news = restTemplate.getForObject(urlToNews, News.class);
         return news.getResponse().getResults();
     }
 
-    public void saveNews(Result result){
+    public void saveNews(Result result) {
         logger.error("error");
         newsDao.addNews(result);
+    }
+
+    public void updateNews(NewsJasonModel newResult) {
+        newsDao.updateNews(newResult);
     }
 
 

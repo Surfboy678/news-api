@@ -2,12 +2,11 @@ package com.brodacki.janusz.newsapi.jasonModel;
 
 public class NewsJasonModel {
 
-
     private String type;
     private String sectionName;
     private String webTitle;
 
-    public NewsJasonModel( String type, String sectionName, String webTitle) {
+    public NewsJasonModel(String type, String sectionName, String webTitle) {
 
         this.type = type;
         this.sectionName = sectionName;
@@ -40,7 +39,6 @@ public class NewsJasonModel {
     public void setWebTitle(String webTitle) {
         this.webTitle = webTitle;
     }
-
 
 
     @Override
